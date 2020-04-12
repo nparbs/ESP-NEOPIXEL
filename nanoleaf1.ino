@@ -118,7 +118,7 @@ void loop() {
     case 6:
       animation = "Rainbow 2";
       Serial.println("case6 - Tri Fade Rainbow");
-      triFadeNextFull(25, 1);
+      triFadeNextFull(45, 1);
       break;
   }
 
@@ -136,9 +136,14 @@ void webLoop() {
   }
 
   Serial.println("new client");
+  int t = 0;
   while (!client.available()) { // Wait until the client sends some data
+    t++;
     delay(5);
     Serial.print("waiting...");
+    if(t>100){
+      break;
+    }
   }
 
   String req = client.readStringUntil('\r'); // Read the first line of the request
